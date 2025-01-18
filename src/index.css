@@ -1,0 +1,9 @@
+.card-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  row-gap: 1rem;
+}
+
+.button {
+  margin: 5px;
+}

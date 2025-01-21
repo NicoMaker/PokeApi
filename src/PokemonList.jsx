@@ -6,10 +6,10 @@ import { ArrowBack, ArrowForward } from "@mui/icons-material"; // Importa le ico
 export default function PokemonList() {
   const [result, setResult] = useState(undefined);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
+  const [currentPage, setCurrentPage] = useState(1); // Per tracciare la pagina corrente
 
   const request = async () => {
     const body = await get(url);
-    console.log(body);
     const newResult = {
       ...body,
       results: await Promise.all(body.results.map((p) => get(p.url))),
@@ -19,15 +19,15 @@ export default function PokemonList() {
 
   const next = () => {
     if (result.next) {
-      const nextUrl = result.next;
-      setUrl(nextUrl);
+      setUrl(result.next);
+      setCurrentPage((prev) => prev + 1); // Incrementa pagina
     }
   };
 
   const previous = () => {
     if (result.previous) {
-      const nextUrl = result.previous;
-      setUrl(nextUrl);
+      setUrl(result.previous);
+      setCurrentPage((prev) => Math.max(prev - 1, 1)); // Decrementa pagina
     }
   };
 
@@ -37,7 +37,8 @@ export default function PokemonList() {
 
   return (
     !!result && (
-      <>
+      <div>
+        <h2>Pagina dei Pokémon: {currentPage}</h2>
         <div className="arrows-container">
           <button
             type="button"
@@ -61,7 +62,7 @@ export default function PokemonList() {
             <Card key={p.name} pokemon={p} />
           ))}
         </div>
-      </>
+      </div>
     )
   );
 }

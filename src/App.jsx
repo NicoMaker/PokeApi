@@ -1,4 +1,3 @@
-import './App.css';
 import PokemonList from "./PokemonList";
 import "bootstrap/dist/css/bootstrap.min.css";
 

@@ -1,1 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap");
 
+body {
+  background: linear-gradient(135deg, red, darkred);
+  color: white;
+  font-family: "Playwrite IN", serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-family: "Playwrite IN", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background: white;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-img-top {
+  border-bottom: 3px solid yellow;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.card-title {
+  color: red;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.card-text .button {
+  margin: 5px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  border: none;
+  color: black;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.card-text .button:hover {
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: orange;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.icon {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+.btn {
+  background-color: yellow; /* Usa background-color specifico */
+  color: red; /* Colore del testo */
+  font-weight: bold;
+  text-align: center; /* Centra il testo */
+  display: inline-flex; /* Assicura flessibilità per centraggio icone */
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  background-color: orange; /* Hover definito */
+  color: white; /* Colore testo */
+}
+.icon {
+  display: flex; /* Per il centraggio */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  font-size: 1.5rem; /* Dimensione icona */
+  margin: 0; /* Rimuovi margini se necessario */
+}
+
+.arrowback,
+.arrowforward {
+  display: flex; /* Abilita Flexbox */
+  align-items: center;
+  justify-content: center;
+  background-color: yellow; /* Sfondo giallo */
+  color: red; /* Colore icona */
+  width: 50px; /* Dimensioni specifiche */
+  height: 50px;
+  border-radius: 50%; /* Forma circolare */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombra */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.arrowback:hover,
+.arrowforward:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}

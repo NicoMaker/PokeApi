@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div className="container-fluid">
-        <h1>Pokèmon API</h1>
+        <h1 className="titolo">Pokèmon API</h1>
         <PokemonList></PokemonList>
       </div>
     </>

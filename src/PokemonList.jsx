@@ -38,22 +38,24 @@ export default function PokemonList() {
   return (
     !!result && (
       <>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={previous}
-          disabled={!result.previous}
-        >
-          <ArrowBack className="icon" />
-        </button>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={next}
-          disabled={!result.next}
-        >
-          <ArrowForward className="icon" />
-        </button>
+        <div className="arrows-container">
+          <button
+            type="button"
+            className="arrowback"
+            onClick={previous}
+            disabled={!result.previous}
+          >
+            <ArrowBack className="icon" />
+          </button>
+          <button
+            type="button"
+            className="arrowforward"
+            onClick={next}
+            disabled={!result.next}
+          >
+            <ArrowForward className="icon" />
+          </button>
+        </div>
         <div className="card-grid">
           {result.results.map((p) => (
             <Card key={p.name} pokemon={p} />

@@ -16,7 +16,6 @@ body {
 h1 {
   text-align: center;
   font-size: 3rem;
-  color: yellow;
   text-shadow: 2px 2px 5px black;
   margin-bottom: 20px;
   font-weight: 700;
@@ -24,6 +23,11 @@ h1 {
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
+}
+
+.titolo {
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
 }
 
 .card-grid {
@@ -147,6 +151,35 @@ h1 {
   justify-content: center; /* Centra orizzontalmente */
   font-size: 1.5rem; /* Dimensione icona */
   margin: 0; /* Rimuovi margini se necessario */
+}
+
+.arrowback,
+.arrowforward {
+  display: flex; /* Abilita Flexbox */
+  align-items: center;
+  justify-content: center;
+  background-color: blue; 
+  color: red; /* Colore icona */
+  width: 50px; /* Dimensioni specifiche */
+  height: 50px;
+  border-radius: 50%; /* Forma circolare */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombra */
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.arrowback:hover,
+.arrowforward:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.arrows-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Per separare le frecce dal resto */
+  gap: 20px; /* Spazio tra le frecce */
 }
 
 .arrowback,

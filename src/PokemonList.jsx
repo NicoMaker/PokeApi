@@ -1,20 +1,32 @@
 import { useState, useEffect } from "react";
+import { ArrowBack, ArrowForward } from "@mui/icons-material"; // Icone di navigazione
+
+// Componente Card per ogni Pokémon (modifica questo file secondo le tue esigenze)
 import { Card } from "./Card";
+
+// Funzione per effettuare richieste HTTP (esempio generico, puoi sostituirla con fetch)
 import { get } from "./request";
-import { ArrowBack, ArrowForward } from "@mui/icons-material"; // Importa le icone
 
 export default function PokemonList() {
-  const [result, setResult] = useState(undefined);
-  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
-  const [currentPage, setCurrentPage] = useState(1); // Per tracciare la pagina corrente
+  const [result, setResult] = useState(undefined); // Dati dei Pokémon
+  const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/"); // URL iniziale
+  const [currentPage, setCurrentPage] = useState(1); // Pagina corrente
+  const [totalPokemons, setTotalPokemons] = useState(0); // Totale Pokémon dinamico
+  const pokemonsPerPage = 12; // Pokémon per pagina (costante)
 
-  const totalPokemons = 1279; // Totale Pokémon (aggiorna se necessario)
-  const pokemonsPerPage = 21; // Pokémon per pagina (costante)
-  const totalPages = Math.ceil(totalPokemons / pokemonsPerPage); // Numero totale di pagine
+  // Calcolo del numero totale di pagine
+  const totalPages = Math.ceil(totalPokemons / pokemonsPerPage);
 
   // Funzione per caricare i dati dei Pokémon
   const request = async () => {
     const body = await get(url);
+
+    // Imposta il numero totale di Pokémon (solo al primo caricamento)
+    if (!totalPokemons && body.count) {
+      setTotalPokemons(body.count);
+    }
+
+    // Carica i dati dettagliati per ogni Pokémon
     const newResult = {
       ...body,
       results: await Promise.all(body.results.map((p) => get(p.url))),
@@ -36,8 +48,7 @@ export default function PokemonList() {
     if (currentPage < totalPages) {
       goToPage(currentPage + 1);
     } else {
-      // Torna alla prima pagina
-      goToPage(1);
+      goToPage(1); // Torna alla prima pagina
     }
   };
 
@@ -46,28 +57,27 @@ export default function PokemonList() {
     if (currentPage > 1) {
       goToPage(currentPage - 1);
     } else {
-      // Torna all'ultima pagina
-      goToPage(totalPages);
+      goToPage(totalPages); // Torna all'ultima pagina
     }
   };
 
-  // Effettua la richiesta iniziale al caricamento della pagina
+  // Caricamento iniziale della prima pagina
   useEffect(() => {
-    // Chiama goToPage subito per caricare la prima pagina
     goToPage(1);
-  }, []); // Esegui solo una volta al primo caricamento
+  }, []);
 
+  // Aggiorna i dati ogni volta che cambia l'URL
   useEffect(() => {
     if (url) {
       request();
     }
-  }, [url]); // Esegui la richiesta ogni volta che cambia l'URL
+  }, [url]);
 
   return (
     !!result && (
-      <div>
+      <div className="pokemon-list">
         <h2>
-          Pagina {currentPage} di {totalPages}
+          Pagina {currentPage} di {totalPages || "?"}
         </h2>
         <div className="arrows-container">
           <button type="button" className="arrowback" onClick={previous}>

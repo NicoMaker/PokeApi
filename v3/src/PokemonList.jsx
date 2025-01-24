@@ -16,7 +16,7 @@ export default function PokemonList() {
   // Funzione per caricare tutti i Pokémon
   const request = async () => {
     setLoading(true);
-    const url = "https://pokeapi.co/api/v2/pokemon?limit=1000"; // Carica 1000 Pokémon
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=1500"; // Carica 1000 Pokémon
     const body = await get(url);
 
     const allPokemonData = await Promise.all(
@@ -27,9 +27,10 @@ export default function PokemonList() {
     setLoading(false);
   };
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = async (e) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
+    setLoading(true); // Attiva l'animazione durante la ricerca
 
     if (value) {
       const filtered = allPokemons.filter((pokemon) =>
@@ -39,6 +40,7 @@ export default function PokemonList() {
     } else {
       setFilteredResults(allPokemons);
     }
+    setLoading(false); // Disattiva l'animazione una volta completata la ricerca
     setCurrentPage(1); // Reimposta la pagina alla 1 dopo una ricerca
   };
 
@@ -117,11 +119,9 @@ export default function PokemonList() {
       </div>
       {loading ? (
         <div className="loading">
-          <img
-            src="https://cdn.dribbble.com/users/722246/screenshots/6139167/pokeball.gif"
-            alt="Caricamento in corso..."
-            className="loading-image"
-          />
+          <div className="spinner">
+            <ArrowForward className="spinner-icon" />
+          </div>
           <p>Caricamento in corso...</p>
         </div>
       ) : (

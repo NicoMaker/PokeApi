@@ -1,0 +1,268 @@
+body {
+  background: linear-gradient(135deg, red, darkred);
+  color: white;
+  font-family: "Playwrite IN", serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.titolo {
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 elementi per riga su desktop */
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background: white;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.card-img-top {
+  border-bottom: 3px solid yellow;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+.card-title {
+  color: red;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 10px 0;
+  text-transform: capitalize; /*testo con la prima lettera in maiuscolo*/
+}
+
+.card-text {
+  text-align: center;
+}
+
+.card-text .button {
+  margin: 5px;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  border: none;
+  color: black;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.card-text .button:hover {
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid black;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: orange;
+  color: white;
+  transform: translateY(-3px);
+}
+
+.arrows-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.arrowback,
+.arrowforward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: yellow;
+  color: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.arrowback:hover,
+.arrowforward:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+/* Media queries per tablet */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 elementi per riga su tablet */
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+
+/* Media queries per cellulare */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr; /* 1 elemento per riga su mobile */
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .arrowback,
+  .arrowforward {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px; /* Altezza del contenitore */
+}
+
+.loading-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Bordo più chiaro */
+  border-top: 5px solid #3498db; /* Bordo animato */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+p {
+  font-size: 1.2em;
+  color: #555;
+  font-weight: bold;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-toggle {
+  background-color: rgb(43, 0, 255);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-toggle:hover {
+  background-color: rgb(43, 0, 255);
+}

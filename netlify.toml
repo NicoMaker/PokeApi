@@ -1,0 +1,2 @@
+[build]
+  publish = "." # Pubblica tutto dalla radice del progetto

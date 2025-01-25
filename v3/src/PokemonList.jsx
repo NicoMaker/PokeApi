@@ -37,32 +37,23 @@ export default function PokemonList() {
         pokemon.name.toLowerCase().includes(value)
       );
       setFilteredResults(filtered);
-    } else {
-      setFilteredResults(allPokemons);
-    }
+    } else setFilteredResults(allPokemons);
+
     setLoading(false); // Disattiva l'animazione una volta completata la ricerca
     setCurrentPage(1); // Reimposta la pagina alla 1 dopo una ricerca
   };
 
-  const goToPage = (page) => {
-    setCurrentPage(page);
-  };
+  const goToPage = (page) => setCurrentPage(page);
 
   const next = () => {
     const totalPages = Math.ceil(filteredResults.length / pokemonsPerPage);
-    if (currentPage < totalPages) {
-      goToPage(currentPage + 1);
-    } else {
-      goToPage(1); // Torna alla prima pagina
-    }
+    if (currentPage < totalPages) goToPage(currentPage + 1);
+    else goToPage(1); // Torna alla prima pagina
   };
 
   const previous = () => {
-    if (currentPage > 1) {
-      goToPage(currentPage - 1);
-    } else {
-      alert("Sei già alla prima pagina!");
-    }
+    if (currentPage > 1) goToPage(currentPage - 1);
+    else alert("Sei già alla prima pagina!");
   };
 
   useEffect(() => {

@@ -16,7 +16,7 @@ export default function PokemonList() {
   // Funzione per caricare tutti i Pokémon
   const request = async () => {
     setLoading(true);
-    const url = "https://pokeapi.co/api/v2/pokemon?limit=1500"; // Carica 1000 Pokémon
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=1500`; // Carica 1500 Pokémon
     const body = await get(url);
 
     const allPokemonData = await Promise.all(
@@ -128,7 +128,10 @@ export default function PokemonList() {
         <div className="card-grid">
           {filteredResults && filteredResults.length > 0 ? (
             filteredResults
-              .slice((currentPage - 1) * pokemonsPerPage, currentPage * pokemonsPerPage)
+              .slice(
+                (currentPage - 1) * pokemonsPerPage,
+                currentPage * pokemonsPerPage
+              )
               .map((p) => <Card key={p.name} pokemon={p} />)
           ) : (
             <p>Nessun Pokémon trovato.</p>

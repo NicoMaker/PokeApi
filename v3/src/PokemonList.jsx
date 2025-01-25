@@ -53,7 +53,7 @@ export default function PokemonList() {
 
   const previous = () => {
     if (currentPage > 1) goToPage(currentPage - 1);
-    else alert("Sei già alla prima pagina!");
+    else goToPage(totalPages);
   };
 
   useEffect(() => {

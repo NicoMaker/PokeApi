@@ -111,23 +111,23 @@ export default function PokemonList() {
       {loading ? (
         <div className="loading">
           <div className="spinner">
-            <ArrowForward className="spinner-icon" />
+            <ArrowForward />
           </div>
           <p>Caricamento in corso...</p>
         </div>
-      ) : (
+      ) : filteredResults.length > 0 ? (
         <div className="card-grid">
-          {filteredResults && filteredResults.length > 0 ? (
-            filteredResults
-              .slice(
-                (currentPage - 1) * pokemonsPerPage,
-                currentPage * pokemonsPerPage
-              )
-              .map((p) => <Card key={p.name} pokemon={p} />)
-          ) : (
-            <p>Nessun Pokémon trovato.</p>
-          )}
+          {filteredResults
+            .slice(
+              (currentPage - 1) * pokemonsPerPage,
+              currentPage * pokemonsPerPage
+            )
+            .map((p) => (
+              <Card key={p.name} pokemon={p} />
+            ))}
         </div>
+      ) : (
+        <p>Nessun Pokémon trovato.</p>
       )}
     </div>
   );

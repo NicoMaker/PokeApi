@@ -266,3 +266,41 @@ p {
 .search-toggle:hover {
   background-color: rgb(43, 0, 255);
 }
+
+.search-bar button {
+  background-color: rgb(43, 0, 255);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: rgb(0, 102, 204); /* Colore più chiaro per hover */
+  transform: scale(1.05); /* Leggera espansione al passaggio */
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.5);
+}
+
+.search-toggle {
+  background-color: rgb(43, 0, 255);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-toggle:hover {
+  background-color: rgb(0, 102, 204); /* Colore coordinato all'altro bottone */
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.5);
+}
+
+.search-toggle.active {
+  background-color: rgb(0, 102, 204); /* Colore attivo */
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.5);
+}

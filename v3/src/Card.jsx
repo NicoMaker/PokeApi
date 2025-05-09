@@ -1,6 +1,6 @@
 "use client";
 
-export function Card({ pokemon, onClick }) {
+export function Card({ pokemon }) {
   // Get type color based on Pokémon type
   const getTypeColor = (type) => {
     // This is just for the data-type attribute, actual colors are in CSS
@@ -23,15 +23,28 @@ export function Card({ pokemon, onClick }) {
     pokemon.stats.find((stat) => stat.stat.name === "defense")?.base_stat || 0;
   const speed =
     pokemon.stats.find((stat) => stat.stat.name === "speed")?.base_stat || 0;
+  const specialAttack =
+    pokemon.stats.find((stat) => stat.stat.name === "special-attack")
+      ?.base_stat || 0;
+  const specialDefense =
+    pokemon.stats.find((stat) => stat.stat.name === "special-defense")
+      ?.base_stat || 0;
 
   // Calculate stat percentages (max stat is 255)
   const hpPercent = (hp / 255) * 100;
   const attackPercent = (attack / 255) * 100;
   const defensePercent = (defense / 255) * 100;
   const speedPercent = (speed / 255) * 100;
+  const specialAttackPercent = (specialAttack / 255) * 100;
+  const specialDefensePercent = (specialDefense / 255) * 100;
+
+  // Calculate total stats
+  const totalStats =
+    hp + attack + defense + specialAttack + specialDefense + speed;
+  const totalStatsPercent = Math.min(100, (totalStats / 720) * 100);
 
   return (
-    <div className="card" onClick={onClick}>
+    <div className="card">
       {/* Pokemon ID badge */}
       <div className="pokemon-id">#{formattedId}</div>
 
@@ -91,6 +104,32 @@ export function Card({ pokemon, onClick }) {
             </div>
           </div>
 
+          <div className="stat-bar stat-special-attack">
+            <div className="stat-label">
+              <span>Sp. Attack</span>
+              <span>{specialAttack}</span>
+            </div>
+            <div className="stat-progress">
+              <div
+                className="stat-fill"
+                style={{ width: `${specialAttackPercent}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="stat-bar stat-special-defense">
+            <div className="stat-label">
+              <span>Sp. Defense</span>
+              <span>{specialDefense}</span>
+            </div>
+            <div className="stat-progress">
+              <div
+                className="stat-fill"
+                style={{ width: `${specialDefensePercent}%` }}
+              ></div>
+            </div>
+          </div>
+
           <div className="stat-bar stat-speed">
             <div className="stat-label">
               <span>Speed</span>
@@ -100,6 +139,19 @@ export function Card({ pokemon, onClick }) {
               <div
                 className="stat-fill"
                 style={{ width: `${speedPercent}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="stat-bar stat-total">
+            <div className="stat-label">
+              <span>Total</span>
+              <span>{totalStats}</span>
+            </div>
+            <div className="stat-progress">
+              <div
+                className="stat-fill stat-total-fill"
+                style={{ width: `${totalStatsPercent}%` }}
               ></div>
             </div>
           </div>
@@ -117,6 +169,24 @@ export function Card({ pokemon, onClick }) {
               {t.type.name}
             </button>
           ))}
+        </div>
+
+        {/* Basic info */}
+        <div className="pokemon-basic-info">
+          <div className="basic-info-item">
+            <span>Altezza:</span>
+            <span>{pokemon.height / 10} m</span>
+          </div>
+          <div className="basic-info-item">
+            <span>Peso:</span>
+            <span>{pokemon.weight / 10} kg</span>
+          </div>
+          <div className="basic-info-item">
+            <span>Abilità:</span>
+            <span>
+              {pokemon.abilities.map((a) => a.ability.name).join(", ")}
+            </span>
+          </div>
         </div>
       </div>
     </div>

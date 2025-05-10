@@ -1422,3 +1422,318 @@ p {
   padding: 10px;
   margin-top: 10px;
 }
+
+/* Pokemon Basic Info - Enhanced UX Design with Improved Text Visibility */
+.pokemon-basic-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.basic-info-item {
+  background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg) var(--spacing-md);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: visible; /* Changed from hidden to ensure text visibility */
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 140px; /* Ensure consistent height */
+}
+
+.basic-info-item:nth-child(1) {
+  background: linear-gradient(135deg, var(--type-rock), var(--type-ground));
+}
+
+.basic-info-item:nth-child(2) {
+  background: linear-gradient(135deg, var(--type-steel), var(--type-fighting));
+}
+
+.basic-info-item:nth-child(3) {
+  background: linear-gradient(135deg, var(--type-psychic), var(--type-fairy));
+}
+
+.basic-info-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0ZM30 15C38.2843 15 45 21.7157 45 30C45 38.2843 38.2843 45 30 45C21.7157 45 15 38.2843 15 30C15 21.7157 21.7157 15 30 15Z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  z-index: 0;
+  opacity: 0.2;
+  border-radius: var(--radius-lg); /* Match parent border radius */
+}
+
+.basic-info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl), 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styling */
+.basic-info-item::after {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  display: block;
+}
+
+.basic-info-item:nth-child(1)::after {
+  content: "📏";
+}
+
+.basic-info-item:nth-child(2)::after {
+  content: "⚖️";
+}
+
+.basic-info-item:nth-child(3)::after {
+  content: "✨";
+}
+
+/* Label styling */
+.basic-info-item span:first-child {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9); /* Improved contrast */
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Better readability */
+  display: block;
+  width: 100%;
+}
+
+/* Value styling */
+.basic-info-item span:last-child {
+  font-size: 1.25rem; /* Slightly smaller for better fit */
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Enhanced shadow for readability */
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2); /* Background for better contrast */
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  word-break: break-word; /* Allow breaking of long words */
+  max-width: 100%; /* Ensure text stays within container */
+  display: block;
+  margin-top: auto; /* Push to bottom of flex container */
+}
+
+/* Special styling for abilities which might be longer */
+.basic-info-item:nth-child(3) span:last-child {
+  font-size: 1.1rem; /* Smaller font for potentially longer text */
+  padding: 0.5rem;
+  line-height: 1.4;
+  max-height: none; /* Allow expansion */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .pokemon-basic-info {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+  }
+  
+  .basic-info-item {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  .basic-info-item span:last-child {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pokemon-basic-info {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .basic-info-item {
+    padding: var(--spacing-md);
+    min-height: auto; /* Allow natural height on mobile */
+  }
+  
+  .basic-info-item span:last-child {
+    font-size: 1.25rem; /* Can be larger on mobile since we have more vertical space */
+  }
+  
+  /* Reposition icons for mobile */
+  .basic-info-item::after {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    margin: 0;
+  }
+}
+
+/* Pokemon Basic Info - Vertical Layout with Enhanced UX Design */
+.pokemon-basic-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+  max-width: 100%;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.basic-info-item {
+  background: linear-gradient(135deg, var(--color-secondary-dark), var(--color-secondary));
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: visible;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+}
+
+.basic-info-item:nth-child(1) {
+  background: linear-gradient(135deg, var(--type-rock), var(--type-ground));
+  animation-delay: 0.1s;
+}
+
+.basic-info-item:nth-child(2) {
+  background: linear-gradient(135deg, var(--type-steel), var(--type-fighting));
+  animation-delay: 0.2s;
+}
+
+.basic-info-item:nth-child(3) {
+  background: linear-gradient(135deg, var(--type-psychic), var(--type-fairy));
+  animation-delay: 0.3s;
+}
+
+.basic-info-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0C13.4315 0 0 13.4315 0 30C0 46.5685 13.4315 60 30 60C46.5685 60 60 46.5685 60 30C60 13.4315 46.5685 0 30 0ZM30 15C38.2843 15 45 21.7157 45 30C45 38.2843 38.2843 45 30 45C21.7157 45 15 38.2843 15 30C15 21.7157 21.7157 15 30 15Z' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  z-index: 0;
+  opacity: 0.2;
+  border-radius: var(--radius-lg);
+}
+
+.basic-info-item:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-xl), 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styling */
+.basic-info-item::after {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  margin-right: var(--spacing-lg);
+  flex-shrink: 0;
+}
+
+.basic-info-item:nth-child(1)::after {
+  content: "📏";
+}
+
+.basic-info-item:nth-child(2)::after {
+  content: "⚖️";
+}
+
+.basic-info-item:nth-child(3)::after {
+  content: "✨";
+}
+
+/* Text container */
+.basic-info-item .text-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Label styling */
+.basic-info-item span:first-child {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Value styling */
+.basic-info-item span:last-child {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  word-break: break-word;
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* Special styling for abilities which might be longer */
+.basic-info-item:nth-child(3) span:last-child {
+  line-height: 1.4;
+}
+
+/* Animation for items */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.basic-info-item {
+  animation: slideInFromLeft 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .basic-info-item {
+    padding: var(--spacing-md);
+  }
+  
+  .basic-info-item::after {
+    font-size: 1.75rem;
+    margin-right: var(--spacing-md);
+  }
+  
+  .basic-info-item span:last-child {
+    font-size: 1.1rem;
+  }
+}
+
+body{
+  overflow-y: auto;
+}

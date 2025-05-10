@@ -1414,3 +1414,11 @@ p {
 .stat-speed .stat-fill {
   background: var(--type-electric);
 }
+
+.pokemon-basic-info{
+  text-align: center;
+  font-size: 1.5rem;
+  border: 2px solid var(--color-primary);
+  padding: 10px;
+  margin-top: 10px;
+}

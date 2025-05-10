@@ -174,7 +174,7 @@ export function Card({ pokemon }) {
         {/* Basic info */}
         <div className="pokemon-basic-info">
           <div className="basic-info-item">
-            <span>Altezza:</span>
+            <span className="basic-info">Altezza:</span>
             <span>{pokemon.height / 10} m</span>
           </div>
           <div className="basic-info-item">

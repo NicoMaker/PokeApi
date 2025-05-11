@@ -1487,17 +1487,6 @@ p {
   display: block;
 }
 
-.basic-info-item:nth-child(1)::after {
-  content: "📏";
-}
-
-.basic-info-item:nth-child(2)::after {
-  content: "⚖️";
-}
-
-.basic-info-item:nth-child(3)::after {
-  content: "✨";
-}
 
 /* Label styling */
 .basic-info-item span:first-child {
@@ -1647,17 +1636,6 @@ p {
   flex-shrink: 0;
 }
 
-.basic-info-item:nth-child(1)::after {
-  content: "📏";
-}
-
-.basic-info-item:nth-child(2)::after {
-  content: "⚖️";
-}
-
-.basic-info-item:nth-child(3)::after {
-  content: "✨";
-}
 
 /* Text container */
 .basic-info-item .text-container {
